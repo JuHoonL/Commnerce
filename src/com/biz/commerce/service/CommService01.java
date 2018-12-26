@@ -154,7 +154,7 @@ public class CommService01 {
 		//vio와 상품코드가 일치하는 vp의 VO의 intInPrice변수에서 매입가격을 불러오고 해당 vio에서 intQuan변수에서 수량을 불러와서 곱해서 매입총금액을 vo의 매입금액에 저장해준다. 
 		if(vio.getStrInOut().equals("1")) {
 			vo.setStrInOut("매입");
-			vo.setIntInPrice(vp.getIntInPrice() * vio.getIntQuan());
+			vo.setIntInPrice(vio.getIntprice() * vio.getIntQuan());
 			vo.setIntOutPrice(0);
 			
 		} else {
@@ -162,7 +162,7 @@ public class CommService01 {
 		//vio와 상품코드가 일치하는 vp의 VO의 intOutPrice변수에서 매출가격을 불러오고 해당 vio에서 intQuan변수에서 수량을 불러와서 곱해서 매출총금액을 vo의 매출금액에 저장해준다.
 			vo.setStrInOut("매출");
 			vo.setIntInPrice(0);
-			vo.setIntOutPrice(vp.getIntOutPrice() * vio.getIntQuan());
+			vo.setIntOutPrice(vio.getIntprice() * vio.getIntQuan());
 		}
 	}
 	
