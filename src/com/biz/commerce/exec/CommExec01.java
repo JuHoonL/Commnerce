@@ -25,11 +25,11 @@ public class CommExec01 {
 		//생성자 메서드로 받은 파일들을 읽어오는 과정
 		cs.readF();
 		
-		//cs.view()를 실행해서 inout리스트를 확인
-		cs.view();
-		
 		//comList에 매칭하여 완성한 VO를 추가하는 과정의 메서드를 사용하는 과정
 		cs.addcomList();
+		
+		//cs.view()를 실행해서 inout리스트를 확인
+		//cs.view();
 		
 		//완성된 comList를 PrintWriter를 사용하여 txt형태로 출력하는 메서드를 사용하는 과정
 		cs.printComm();

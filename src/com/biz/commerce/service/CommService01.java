@@ -178,8 +178,11 @@ public class CommService01 {
 				//매칭시켜 member변수들을 저장한 VO를 vo라는 객체로 저장
 				CommVO01 vo = matchingF(vio, vp);
 				
-				//만약 리턴받은 vo가 null값이면 comList에 저장(추가)하는 부분
-				if(vo != null) comList.add(vo);
+				//만약 리턴받은 vo가 null값이면 for를 다시 실행
+				if(vo == null) continue;
+				
+				//vo가 null값이 아니면 vo를 comList에 추가(저장)
+				comList.add(vo);
 			}
 		}
 	}
