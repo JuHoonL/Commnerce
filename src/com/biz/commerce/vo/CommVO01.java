@@ -3,7 +3,7 @@ package com.biz.commerce.vo;
 /*
  * 매입매출데이터.txt 파일로부터 데이터를 읽어서 List를 만들때 사용할 데이터클래스(VO) 선언
  */
-public class CommVO {
+public class CommVO01 {
 
 	/*
 	 * 거래일자:상품코드:거래구분:단가:수량 형식의 데이터를 읽어서 각 member 변수에 저장하고,
@@ -13,8 +13,8 @@ public class CommVO {
 	String strCcode;		//상품코드
 	String strProduct;		//상품명
 	String strInOut;		//거래구분
-	String strprice;		//단가
-	String strQuan;			//수량
+	int intprice;		//단가
+	int intQuan;			//수량
 	
 	int intInPrice;
 	int intOutPrice;
@@ -44,17 +44,17 @@ public class CommVO {
 	public void setStrInOut(String strInOut) {
 		this.strInOut = strInOut;
 	}
-	public String getStrprice() {
-		return strprice;
+	public int getIntprice() {
+		return intprice;
 	}
-	public void setStrprice(String strprice) {
-		this.strprice = strprice;
+	public void setIntprice(int intprice) {
+		this.intprice = intprice;
 	}
-	public String getStrQuan() {
-		return strQuan;
+	public int getIntQuan() {
+		return intQuan;
 	}
-	public void setStrQuan(String strQuan) {
-		this.strQuan = strQuan;
+	public void setIntQuan(int intQuan) {
+		this.intQuan = intQuan;
 	}
 	public int getIntInPrice() {
 		return intInPrice;
@@ -71,8 +71,8 @@ public class CommVO {
 
 	
 	public String toString() {
-		return "CommVO [strDate=" + strDate + ", strCcode=" + strCcode + ", strProduct=" + strProduct + ", strInOut=" + strInOut + ", strprice="
-				+ strprice + ", strQuan=" + strQuan + ", intInPrice=" + intInPrice + ", intOutPrice=" + intOutPrice
+		return "CommVO [strDate=" + strDate + ", strCcode=" + strCcode + ", strProduct=" + strProduct + ", strInOut=" + strInOut + ", intprice="
+				+ intprice + ", intQuan=" + intQuan + ", intInPrice=" + intInPrice + ", intOutPrice=" + intOutPrice
 				+ "]";
 	}
 
