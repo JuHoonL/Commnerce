@@ -28,7 +28,8 @@ public class CommService01 {
 
 	
 	//IoService 클래스로 객체를 생성할 때 호출되는 생성자를 선언
-	//이 클래스에서는 Text파일을 읽어서 매입매출 관련 업무를 수행 할 것이므로 생서앚에서는 Text파일의 경로정보를 매개변수로 받아서 변수에 저장하는 코드를 수행한다.
+	//이 클래스에서는 Text파일을 읽어서 매입매출 관련 업무를 수행 할 것이므로 생서앚에서는 Text파일의 경로정보를 매개변수로
+	//받아서 변수에 저장하는 코드를 수행한다.
 	public CommService01(String strInoutData, String strProductData, String strCommData) {
 
 		//각 list들을 초기화해줌
@@ -51,7 +52,8 @@ public class CommService01 {
 		
 		try {
 			//생성자에서 값이 할당된 ioFile의 내용을 참조하여 파일을 읽기 위하여 open하는코드
-			//이코드는 작동되는 과정에서 불가항력적인 문제가 발생할 소지가 있으므로 반드시 try..catch문으로 감싸 주어야한다.
+			//이코드는 작동되는 과정에서 불가항력적인 문제가 발생할 소지가 있으므로 반드시 try..catch문으로 
+			//감싸 주어야한다.
 			fr = new FileReader(strInoutData);
 			
 			//FileReader로 open된 파일 정보를 Buffer에 연결하여 준다.
@@ -124,8 +126,8 @@ public class CommService01 {
 	}
 	
 	
-	//매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 매개 변수로 받아 두 vo에 저장되어있는 상품코드가 일치하는지 여부를 확인하여 
-	//일치하면 vo에 저장하여 vo를 리턴하고일치하지않으면 null값을 리턴하는 메서드
+	//매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 매개 변수로 받아 두 vo에 저장되어있는 상품코드가 일치하는지  
+	//여부를 확인하여 일치하면 vo에 저장하여 vo를 리턴하고일치하지않으면 null값을 리턴하는 메서드
 	public CommVO01 matchingF(CommVO01 vio, CommVO01 vp) {
 		//매개변수로 받은  vio와 vp에서 각 상품코드를 비교해서 일치하면 vo에 저장
 		if(vio.getStrCcode().equals(vp.getStrCcode())) {
@@ -147,19 +149,22 @@ public class CommService01 {
 	
 	
 	//해당 member변수를 저장할 VO를 객체로 설정한 vo매개변수와 matching()메서드에서 메칭이 일치하였을 때의 
-	//매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 매개 변수로 받아 매입 매출로 나눠서 매입일 경우 구분에 "매입"을 저장하고 매출일 경우 "매출"을 저장하는 메서드
+	//매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 매개 변수로 받아 매입 매출로 나눠서 매입일 경우 
+	//구분에 "매입"을 저장하고 매출일 경우 "매출"을 저장하는 메서드
 	public void setInOut(CommVO01 vo, CommVO01 vio, CommVO01 vp) {
 	
-		//만약 매입매출데이터를 저장한 VO인 vio의 거래구분이 "1"인 경우 "매입"을 매개변수로 받은 vo의 strInOut변수에 저장하고
-		//vio와 상품코드가 일치하는 vp의 VO의 intInPrice변수에서 매입가격을 불러오고 해당 vio에서 intQuan변수에서 수량을 불러와서 곱해서 매입총금액을 vo의 매입금액에 저장해준다. 
+		//만약 매입매출데이터를 저장한 VO인 vio의 거래구분이 "1"인 경우 "매입"을 매개변수로 받은 vo의 strInOut변수에 
+		//저장하고 vio와 상품코드가 일치하는 vp의 VO의 intInPrice변수에서 매입가격을 불러오고 해당 vio에서   
+		//intQuan변수에서 수량을 불러와서 곱해서 매입총금액을 vo의 매입금액에 저장해준다. 
 		if(vio.getStrInOut().equals("1")) {
 			vo.setStrInOut("매입");
 			vo.setIntInPrice(vio.getIntprice() * vio.getIntQuan());
 			vo.setIntOutPrice(0);
 			
 		} else {
-		//만약 매입매출데이터를 저장한 VO인 vio의 거래구분이 "1"인 아닌경우 "매출"을 매개변수로 받은 vo의 strInOut변수에 저장하고
-		//vio와 상품코드가 일치하는 vp의 VO의 intOutPrice변수에서 매출가격을 불러오고 해당 vio에서 intQuan변수에서 수량을 불러와서 곱해서 매출총금액을 vo의 매출금액에 저장해준다.
+		//만약 매입매출데이터를 저장한 VO인 vio의 거래구분이 "1"인 아닌경우 "매출"을 매개변수로 받은 vo의 strInOut변수에 
+		//저장하고 vio와 상품코드가 일치하는 vp의 VO의 intOutPrice변수에서 매출가격을 불러오고 해당 vio에서 intQuan변수에서  
+		//수량을 불러와서 곱해서 매출총금액을 vo의 매출금액에 저장해준다.
 			vo.setStrInOut("매출");
 			vo.setIntInPrice(0);
 			vo.setIntOutPrice(vio.getIntprice() * vio.getIntQuan());
@@ -167,12 +172,14 @@ public class CommService01 {
 	}
 	
 	
-	//상품코드가 일치하는 매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 찾아서 matchingF()메서드를 이용해서 vo를 리턴받아서 
-	//리턴받은 vo가 null이 아니면 comList에 추가(저장)하는 메서드
+	//상품코드가 일치하는 매입매출데이터를 저장한 vo인 vio와 상품정보를 저장한 vo인 vp를 찾아서 matchingF()메서드를 이용해서 vo를  
+	//리턴받아서 리턴받은 vo가 null이 아니면 comList에 추가(저장)하는 메서드
 	public void addcomList() {
-		//inoutList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 vio라는 객체를 선언해서 사용
+		//inoutList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 
+		//vio라는 객체를 선언해서 사용
 		for(CommVO01 vio : inoutList) {
-			//pdList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 vp라는 객체를 선언해서 사용
+			//pdList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 
+			//vp라는 객체를 선언해서 사용
 			for(CommVO01 vp : pdList) {
 				
 				//매칭시켜 member변수들을 저장한 VO를 vo라는 객체로 저장
@@ -190,7 +197,8 @@ public class CommService01 {
 	
 	//inoutList에 저장되어 있는 매입매출정보 리스트를 console에 표시해서 잘 저장되어 있는지 검사하는 메서드 선언
 	public void view() {
-		//comList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 vo라는 객체를 선언해서 사용
+		//comList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 
+		//vo라는 객체를 선언해서 사용
 		for(CommVO01 vo : comList) {
 			System.out.println(vo);
 		}
@@ -209,7 +217,8 @@ public class CommService01 {
 			//pw라고 선언했던 객체를 초기화를 진행하면서 매개변수로 strCommData를 받아서 해당경로를 지정해주는 부분
 			pw = new PrintWriter(strCommData);
 			
-			//comList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 vo라는 객체를 선언해서 사용
+			//comList에 저장되어있는 리스트의 개수만큼 for를 실행하는데 실행할 때에 CommVO01의 형태로 vo를 불러와서 
+			//vo라는 객체를 선언해서 사용
 			for(CommVO01 vo : comList) {
 				//vo에 저장된 각 member변수들을 PrintWriter의 println을 사용하여 출력하는 부분 
 				pw.println(
